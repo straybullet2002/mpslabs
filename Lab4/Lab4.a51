@@ -15,12 +15,12 @@
 
 
 		ORG		0000h
-		AJMP	INIT_VALUES
+		LJMP	INIT_VALUES
 		ORG		0003h				; Вектор прерывания INT0
-		AJMP	INT_Handler
+		LJMP	INT_Handler
 		ORG		001Bh				; Вектор прерывания TC1
-		AJMP	TC_Handler
-		;ORG	0030h
+		LJMP	TC_Handler
+		ORG	0030h
 		
 INIT_VALUES:
 		MOV		DPTR, #8000h
@@ -42,6 +42,7 @@ INIT_VALUES:
 		INC		DPTR
 		
 START:
+		MOV		SP, #25h
 		MOV		22h, #86d			; t = 430_000=250*86*20
 		MOV		23h, #164d			; T-t = 820_000=250*164*20
 		

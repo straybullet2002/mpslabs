@@ -16,12 +16,12 @@
 
 
 		ORG		0000h
-		AJMP	INIT_VALUES
+		LJMP	INIT_VALUES
 		ORG		0003h				; Переход на обработчик INT0
-		AJMP	INT0_HANDLER
+		LJMP	INT0_HANDLER
 		ORG		000Bh				; Переход на обработчик ПИ
-		AJMP	TC0_HANDLER
-		;ORG	0030h
+		LJMP	TC0_HANDLER
+		ORG	0030h
 	
 INIT_VALUES:
 		MOV		DPTR, #8000h
@@ -43,6 +43,7 @@ INIT_VALUES:
 		INC		DPTR
 
 START:
+		MOV		SP, #25h
 		MOV		IE, #10000011b	; Разрешаем прерывания INT0 и TC0
 		MOV		IP, #00000010b	; Приоритет INT0 = 0, TC0 = 1
 		SETB	IT0				; INT0 по переходу 1/0
