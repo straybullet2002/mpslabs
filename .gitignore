@@ -1,5 +1,7 @@
 *
 !*.a51
+!*.uvproj
+!*.uvopt
 !.gitignore
 !README.md
 
